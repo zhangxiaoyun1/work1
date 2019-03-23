@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    span{
+        background:rgb(216, 213, 213);
+        margin-right:10px;
+        line-height:30px;
+    }
+    </style>
+</head>
+<body>
+    <div style="height:200px;width:345px;margin:0 auto;">
+        <form action="">
+            <input type="search" autofocus placeholder="请输入想查找的商品" required id="find" style="height:35px;width:180px">
+            <input type="submit" value="搜索" id="input" style="height:30px;width:125px">
+            <p style="margin-top:0px;">最近搜索</p>
+        </form>
+        <div id="look"></div>
+        <div style="height:25px;width:20px;float:right;margin-top: -30px;margin-right:-20px;background:rgb(216, 213, 213);" id="clear"><span style="font: 16px; color:white;background:rgb(216, 213, 213);">&nbsp;X</span></div>
+    </div>
+</body>
+<script>
+    var find=document.getElementById("find");
+    var input=document.getElementById("input");
+    var claer=document.getElementById("clear");
+    var look=document.getElementById("look");
+    function fun1(){
+        if(find.value!=null){
+            var data = find.value;
+            var time = new Date().getTime();
+            for(var j=0;j<=localStorage.length-1;j++){
+                if(data==localStorage.getItem(localStorage.key(j))){
+                    localStorage.removeItem(localStorage.key(j));
+                }
+            }
+            localStorage.setItem(time, data);
+        }
+    }
+    function fun3(){
+        for (var i = localStorage.length-1; i>=0; i--) {
+            var result = '<span>';
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            result +=value;
+            result += '</span>';
+            look.innerHTML += result;
+        }
+    }
+    function fun2(){
+        localStorage.clear();
+        look.innerHTML = null;
+    }
+    window.onload=function(){
+			if(!window.localStorage){
+				alert("你的浏览器不支持localstorage");
+			}
+			else{
+                fun3();
+                input.onclick=function up(){
+                    fun1();
+                }
+                clear.onclick=function cl(){
+                    fun2();
+                }
+			}
+		}
+</script>
+</html>
