@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid red;
+        }
+        #meng{
+            position:fixed;
+            left: 9px;
+            top: 9px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+        <canvas id="canvas" width="400" height="200"></canvas>
+        <canvas id="meng" width="400" height="200"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var canvas1 = document.getElementById("meng");
+        var context1 = canvas1.getContext("2d");
+        var temp=0;
+        //字体
+        context.font = "bold 100px 宋体";
+        context.fillStyle = "red";
+        context.fillText("一等奖", 40, 130);
+        //涂层
+        context1.beginPath();
+        context1.fillStyle = "grey";
+        context1.rect(0,0,400,200);
+        context1.fill();
+        context1.closePath();
+        
+        //刮涂层
+        function clear(ev){
+            context1.globalCompositeOperation ='destination-out';
+            context1.beginPath();
+            context1.arc(ev.clientX, ev.clientY, 20, 0, 2 * Math.PI);
+            context1.fill();
+            context1.closePath();
+            judge();
+        }
+        //判断
+        function judge(){ 
+            var imageData = context1.getImageData(0, 0, 400, 200);
+            var j=0;
+            for (var i = 3; i < imageData.data.length; i += 4) {
+                if(imageData.data[i] == 0){
+                    j++;
+                    if(j*4>=0.85*imageData.data.length){
+                            canvas1.style.display="none";
+                    }
+                }  
+            }
+        }
+
+        canvas1.onmousedown=function(ev){
+            temp=1;
+            clear(ev);
+        }
+        canvas1.onmousemove=function(ev){
+            if(temp==1){
+                clear(ev);
+            } 
+        }
+        canvas1.onmouseup=function(){
+            temp=0;
+            judge();
+        }
+    }
+        
+</script>
+</html>
