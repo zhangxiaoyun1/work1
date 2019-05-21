@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #ba1{
+            position: absolute;
+            top:0;
+            left: 20px;
+            width: 400px;
+            height: 500px;
+            border:2px solid rgb(206, 204, 204);
+            box-shadow: -2px -2px 2px rgb(206, 204, 204) inset;
+            overflow: hidden; 
+        }
+        #d1{
+            width: 397px; 
+            height: 260px;
+            background: url(zhanqiao.jpg) no-repeat;
+            background-origin:padding-box;
+            background-size: 397px;
+            background-position: center center;
+        }
+        #day{
+            position: fixed;
+            width: 60px;
+            height: 50px;
+            margin-left: 300px;
+            margin-top: 20px;
+            margin-right: 20px;
+            background-color: rgb(240, 130, 5);
+            border-radius:30px;
+            text-align: center;
+            padding-top: 10px;
+            color:#fff;
+            font-weight: bold;
+            z-index: 10002;
+        }
+        #tupian{
+            position: fixed;
+            width: 60px;
+            height: 30px;
+            background-color: rgb(240, 130, 5);
+            float: left;
+            margin-top: 230px;
+            color:#fff;   
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            z-index: 10002;
+            transition: margin-top 0.25s linear;
+        } #d2{
+            position: fixed;
+            background-color: #fff;
+            width: 378px; 
+            padding-top: 20px;
+            padding-left: 20px;
+            height: 70px;
+            z-index: 10002;
+            transition: margin-top 0.25s linear;
+        }
+        h2{
+            margin-bottom: 20px;
+        }
+        #p{
+            margin-top: -5px;
+            color: rgb(240, 130, 5);
+            font-size: 20px;
+        }
+        #d3{
+            position: fixed;
+            padding-left: 20px;
+            padding-right: 30px;
+            margin-top: -23px;
+            font-size: 17px;
+            line-height: 30px;
+            color:rgb(110, 108, 108);
+            display: flex;
+            background-color: #fff;
+            width: 348px; 
+            height: 200px;
+            opacity: 0;
+            transition: opacity 0.25s linear;
+        }
+        #d4{
+            position: fixed;
+            margin-top: 180px;
+            padding-left: 20px;
+            line-height: 50px;
+            height: 50px;
+            color:rgb(168, 162, 162);
+        }
+        #ba1:hover #meng{
+            display: block;
+        }
+        #ba1:hover{
+            border-color: rgb(161, 160, 160);
+            box-shadow: -2px -2px 2px rgb(161, 160, 160) inset;
+        }
+        @keyframes mymove{
+            25%{
+                background-size:115% 115%;
+            }
+            50%{
+                background-size:125% 125%;
+            }
+            75%{
+                background-size:140% 140%;
+            }
+            100%{
+                background-size:150% 150%;
+            }
+        }
+        #ba1:hover #d1{
+            animation-name: mymove;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode:forwards;
+        } 
+        #ba1:hover #tupian{
+            margin-top: 140px;
+            transition-property: margin-top;
+            transition-duration: 0.25s;
+        }
+       
+        #ba1:hover #d2{
+            margin-top: -90px;
+            transition-property: margin-top;
+            transition-duration: 0.25s;
+        }
+        #ba1:hover #d3{
+            margin-top: 0px;
+            opacity: 1;
+            transition-property:opacity;
+            transition-duration: 0.5s;
+        }
+        #ba1:hover #tupain{
+            margin-top: 32px;
+            transition-property: margin-top;
+            transition-duration: 0.25s;
+        }
+        #ba1:hover #d4{
+            margin-top: 180px;
+        }
+        #meng{
+            position: absolute; 
+            background-color: rgba(51, 50, 50, 0.3);
+            width: 398px; 
+            height: 260px;
+            top:0;
+            left: 0px;
+            z-index: 10001;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="ba1">
+        <div id="d1">
+            <div id="day">
+                <span>15</span>
+                <br>
+                <span>五月</span>
+            </div>
+            <div id="tupian">
+                <span>照片</span>
+            </div>
+        </div>
+        <div id="d2">
+            <h2>青岛栈桥</h2>
+            <p id="p">国家AAAA级旅游景区</p>
+        </div>
+        <div id="d3">
+            <p >青岛栈桥是青岛海滨风景区的景点之一，是国务院于1982年首批公布的国家级风景名胜区。青岛栈桥位于游人如织的青岛中山路南端，桥身从海岸探入如弯月般的青岛湾深处。桥身供游人参观并在此停靠船舶，由此乘船可看海上青岛。</p>
+        </div>
+        <div id="d4">
+            <p><span>10分钟前</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>123评论</span></p>
+        </div>
+        <div id="meng"> 
+
+        </div>
+    </div>
+</body>
+</html>
